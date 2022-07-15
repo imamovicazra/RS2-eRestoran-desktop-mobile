@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  erestoran1-sql:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=QWElkj132!
+      - MSSQL_PID=Developer
+    ports:
+      - 1433:1433
+    networks:
+      - erestoran1appnet
+
+    
+  erestoran1-api:
+    restart: unless-stopped
+    build: .
+    environment:
+      - ConnectionStrings:eRestoran=Server=erestoran1-sql,1433;Database=eRestoranDocker;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+    ports:
+      - 52322:80
+    networks:
+      - erestoran1appnet     
+    links:
+      - erestoran1-sql
+    depends_on:
+      - erestoran1-sql
+      
+networks:
+  erestoran1appnet:
+    driver: bridge

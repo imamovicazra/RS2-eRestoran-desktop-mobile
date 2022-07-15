@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eRestoran.Mobile.ViewModels" xmlns:converters="clr-namespace:eRestoran.Mobile.Converters"
+             x:Class="eRestoran.Mobile.Views.JelaPage" Title="Jela">
+    <ContentPage.BindingContext>
+        <vm:JelaViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="2,20,2,2" HorizontalOptions="CenterAndExpand">
+                <Label Text="Kategorija: " FontSize="15" Padding="0,5,0,0"></Label>           
+                <Picker ItemsSource="{Binding KategorijeList}" SelectedItem="{Binding SelectedKategorija}" ItemDisplayBinding="{Binding Naziv}" SelectedIndexChanged="Picker_SelectedIndexChanged" WidthRequest="250"></Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="2,5,2,2" HorizontalOptions="CenterAndExpand">
+                <SearchBar x:Name="searchBar"
+                       Placeholder="Search..."
+                       FontSize="15"
+                       WidthRequest="300"
+                       SearchCommand="{Binding InitCommand}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+            </StackLayout>
+            <ListView ItemsSource="{Binding JelaList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <StackLayout Padding="10, 20, 10, 20" Orientation="Vertical">
+                                <StackLayout  Orientation="Vertical">
+                                    <Image Source="img.jpg" WidthRequest="300" HeightRequest="250" Aspect="AspectFit"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label Text="{Binding Jelo.Naziv}" HorizontalTextAlignment="Center" 
+                                           LineBreakMode="NoWrap" 
+                                           FontSize="16" />
+                                    <Label Text="{Binding Jelo.Opis}" HorizontalTextAlignment="Center"  Margin="40,0,40,0"
+                                           FontSize="15"></Label>
+                                    <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center"
+                                           FontSize="16">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Jelo.Cijena}"/>
+                                                <Span Text=" KM"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Button Text="Dodaj u korpu" BackgroundColor="Turquoise" Margin="0,10,0,0" Clicked="Button_Clicked" BindingContext="{Binding Jelo}"></Button>
+                                        <ImageButton Source="{Binding IsFavouriteImage}"
+                                                HorizontalOptions="End"
+                                                WidthRequest="25"
+                                                HeightRequest="25"
+                                                     Margin="10,7,0,0"
+                                                     Command="{Binding ToggleFavouriteCommand}">
+                                                                                       
+                                        </ImageButton>
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+   
+</ContentPage>

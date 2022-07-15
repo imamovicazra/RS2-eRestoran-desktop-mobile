@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eRestoran.Mobile.Views.HomePage"
+                          Title="Početna">
+     <RelativeLayout Padding="0">
+        
+        <Image
+            Opacity="0.8"
+            Aspect="AspectFill"
+            Source="home.jpg"
+            RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+        </Image>
+        <Label Text="Dobro došli u eRestoran" BackgroundColor="Turquoise" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"
+               FontSize="50" Padding="15" VerticalOptions="CenterAndExpand" FontAttributes="Bold,Italic" TextColor="White" Opacity="0.9"
+         RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+        RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"></Label>
+
+    </RelativeLayout>
+</ContentPage>

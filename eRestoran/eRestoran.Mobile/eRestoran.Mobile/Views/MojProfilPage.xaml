@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eRestoran.Mobile.ViewModels"
+             x:Class="eRestoran.Mobile.Views.MojProfilPage" Title="Moj profil">
+    <ContentPage.BindingContext>
+        <vm:MojProfilViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand"
+                     Padding="90">
+                <Label Text="Ime" />
+                <Entry Text="{Binding Ime}" x:Name="ime"></Entry>
+                <Label Text="Prezime" />
+                <Entry Text="{Binding Prezime}" x:Name="prezime">
+                </Entry>
+                <Label Text="Korisničko ime"/>
+                <Entry Text="{Binding KorisnickoIme}" x:Name="korisnicko_ime">
+
+                </Entry>
+                <Label Text="Email"/>
+                <Entry Text="{Binding Email}" x:Name="email">
+
+                </Entry>
+                <Label Text="Broj telefona"/>
+                <Entry Text="{Binding BrojTelefona}" x:Name="broj_telefona">
+                </Entry>
+
+                <Button Text="Sačuvaj"
+                    Margin="0, 20, 0, 0"
+                    TextColor="White"
+                    BorderColor="White"
+                    BackgroundColor="Turquoise"
+                    CornerRadius="20"
+                    Command="{Binding SaveCommand}"></Button>
+                <Button Text="Promjena lozinke"
+                    Margin="0, 20, 0, 0"
+                    TextColor="White"
+                    BorderColor="White"
+                    BackgroundColor="Turquoise"
+                    CornerRadius="20"
+                   Clicked="Button_Clicked"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

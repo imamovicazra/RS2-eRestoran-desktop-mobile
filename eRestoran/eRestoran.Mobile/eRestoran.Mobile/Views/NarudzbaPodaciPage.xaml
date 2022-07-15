@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eRestoran.Mobile.ViewModels"
+             x:Class="eRestoran.Mobile.Views.NarudzbaPodaciPage">
+    <ContentPage.BindingContext>
+        <vm:NarudzbaViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>            
+        <StackLayout VerticalOptions="CenterAndExpand"
+                Padding="90">
+            <Label Text="Adresa" />
+            <Entry BindingContext="{Binding Adresa}" x:Name="adresa"></Entry>
+            <Label Text="Broj telefona" />
+            <Entry BindingContext="{Binding BrojTelefona}" x:Name="telefon"></Entry>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,15,0,0">
+                <Button Text="Otkaži narudžbu" Clicked="Button_Clicked"></Button>
+                <Button Text="Sljedeći korak" Clicked="Button_Clicked_1"></Button>
+            </StackLayout>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eRestoran.Mobile.ViewModels"
+             x:Class="eRestoran.Mobile.Views.NarudzbaPage">
+    <ContentPage.BindingContext>
+        <vm:NarudzbaViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand">
+            <ListView ItemsSource="{Binding JelaList}" HorizontalOptions="CenterAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BorderColor="Black" Margin="5">
+                            <StackLayout Padding="10, 20, 10, 20" Orientation="Vertical">
+                                 <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label Text="{Binding Jelo.Naziv}" HorizontalTextAlignment="Center" 
+                                           LineBreakMode="NoWrap" 
+                                           FontSize="16" />
+                                   
+                                    <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center"
+                                           FontSize="16">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Jelo.Cijena}"/>
+                                                <Span Text=" KM"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Button Text="-" Command="{Binding SmanjiKolicinuCommand}" Clicked="Button_Clicked_2"></Button>
+                                        <Entry Text="{Binding Kolicina}" Keyboard="Numeric"></Entry>
+                                        <Button Text="+" Command="{Binding PovecajKolicinuCommand}" Clicked="Button_Clicked_3"></Button>
+                                        <Button Text="Ukloni iz korpe" Clicked="Button_Clicked" BindingContext="{Binding Jelo}" Padding="5,0,0,0"></Button>
+                                        </StackLayout>
+                                    
+                                    </StackLayout>
+                                    
+                            </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label LineBreakMode="NoWrap" FontSize="16" Margin="5">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ukupno: "/>
+                        <Span x:Name="lbl_ukupno"/>
+                        <Span Text=" KM"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,0,0,15">
+                  <Button Text="Očisti korpu" Clicked="Button_Clicked_1" HorizontalOptions="Center"></Button>
+                  <Button x:Name="btn_narudzba" Text="Sljedeći korak" Clicked="Button_Clicked_4" HorizontalOptions="Center"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

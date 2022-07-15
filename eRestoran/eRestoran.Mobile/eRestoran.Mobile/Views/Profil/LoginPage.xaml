@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eRestoran.Mobile.ViewModels.Profil" 
+             x:Class="eRestoran.Mobile.Views.Profil.LoginPage" BackgroundColor="Turquoise">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     Padding="90">
+            <Label Text="Korisničko ime"/>
+            <Entry x:Name="Username" Text="{Binding Username}"> 
+            </Entry>
+            <Label Text="Lozinka"/>
+            <Entry Text="{Binding Password}" IsPassword="True" x:Name="Lozina">
+            </Entry>
+            <Button Text="Prijava"
+                    Margin="0, 20, 0, 0"
+                    BorderColor="White"
+                    BackgroundColor="Transparent"
+                    CornerRadius="20"
+                    Command="{Binding LoginCommand}"
+                    x:Name="btn_prijava"></Button>
+           
+            <Button Text="Registracija"
+                    Margin="0, 20, 0, 0"
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    CornerRadius="20"
+                    Command="{Binding SignUpLoadCommand}"></Button>
+            <Label IsVisible="{Binding IsBusy}" Text="Working..." HorizontalTextAlignment="Center" TextColor="White"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
